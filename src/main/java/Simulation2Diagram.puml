@@ -1,0 +1,32 @@
+@startuml
+class Forum <singleton> {
+-topics:List<Topic> ;
++addTopic():void;
++getForumForDisplay():void;
+
+
+}
+abstract class Post {
+-date:LocalDate ;
+-message:String ;
+-id:UUID ;
+}
+class Topic extends Post {
+-title:String ;
+-comments:List<Comment> ;
++addComment():void;
++getModeratedComments():List<Comment>;
+}
+enum TopicType{
+Regular,
+Announcement,
+News
+}
+class Comment extends Post {
+-topic:Topic ;
+-moderated:boolean ;
++toogleModerated():boolean;
+
+}
+Topic -- Comment
+@enduml
